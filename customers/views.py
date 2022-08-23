@@ -21,8 +21,8 @@ def customers(request):
             return Response({'customer' : serializer.data}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET', 'POST', 'DELETE']) 
 @permission_classes([IsAuthenticated])
-@api_view(['GET', 'POST', 'DELETE'])    
 def customer(request, id):
     try:
         data = Customer.objects.get(pk=id)
